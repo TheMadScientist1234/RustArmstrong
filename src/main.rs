@@ -2,7 +2,6 @@ use std::env;
 
 fn check_armstrong(num: i64) -> bool {
     use std::convert::TryInto;
-
     let mut sum: i64 = 0;
 
     let mut digits: std::vec::Vec<i64> = std::vec::Vec::new();
@@ -26,15 +25,16 @@ fn check_armstrong(num: i64) -> bool {
     }
 
     println!("= {}", sum);
-
-    // Show work
-
     is_armstrong
 }
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let num: i64 = args[1].parse().expect("Not a valid number!");
-    let _is_armstrong: bool = check_armstrong(num);
+    if args.iter().count() >= 2 {
+        let num: i64 = args[1].parse().expect("Not a valid number!");
+        let _is_armstrong: bool = check_armstrong(num);
+    } else {
+        println!("No number was entered.");
+    }
 }
